@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  {{>headerLinks}}
+  </head>
+  <body>
+  {{>navbar}}
+    <!-- main header -->
+    <div class="container-fluid main_header">
+      <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+         <div class="main_content">
+          <form class="temp_form">
+            <input type="text" id="cityName" placeholder="Enter your City Name" autocomplete="off">
+            <input type="submit" value="search" id="submitBtn" >
+          </form>
+         </div>
+         <div class="TempInformation">
+          <div class="top_layer">
+            <p id="day">Tuesday</p>
+            <p id="today_date">8/11/2022</p>
+          </div>
+
+          <div class="main_layer">
+            <p id="city_name">Get Output Here</p>
+           <div class="middle_layer  data_hide">
+            <p id="temp"><span id="temp_real_value">0</span><sup>o</sup>C</p>
+            <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+           </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+    {{!-- footer code  --}}
+  {{>footer}}
+
+  <script src="/js/main.js"></script>
+
+  <script>
+    // for day //
+    const day = document.getElementById('day');
+
+    
+  const getCurrentDay = () => {
+    var weekday = new Array();
+    weekday["0"] = "Sunday";
+    weekday["1"] = "Monday";
+    weekday["2"] = "Tueday";
+    weekday["3"] = "Wedday";
+    weekday["4"] = "Thuday";
+    weekday["5"] = "Friday";
+    weekday["6"] = "Satday";
+    const currentTime = new Date();
+    let day = weekday[currentTime.getDay()];
+    dayy(day);
+  };
+
+  function dayy(day_value){
+    //console.log(day_value)//
+    day.innerHTML=day_value;
+  }
+  
+  getCurrentDay();
+
+  
+  const getCurrentTime = () => {
+    var months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    // +1 is for increment
+
+    var now     = new Date();
+    let month   = `${now.getMonth()+1}`;
+    let date    = now.getDate();
+    let year = now.getFullYear();
+  console.log(month);
+  
+  today_date=document.getElementById('today_date');
+  today_date.innerHTML=`${date} /${month}/ ${year}`;
+  };
+
+
+getCurrentTime();
+
+  
+  </script>
+  </body>
+</html>
